@@ -36,13 +36,10 @@ public class CameraControl : MonoBehaviour
 		camera.transform.localPosition = finalPosition;
 
 		float currentRotation = camera.transform.localRotation.eulerAngles.x;
-		Debug.Log("currentRotation - " + currentRotation);
 
 		float newRotation = currentRotation + (rotationAngle * zoomValue);
 
 		newRotation = Mathf.Clamp(newRotation, 50, MaxRotation);
-
-		Debug.Log("postClamp - " + newRotation);
 
 		Quaternion rotation = Quaternion.Euler(newRotation, 0, 0);
 

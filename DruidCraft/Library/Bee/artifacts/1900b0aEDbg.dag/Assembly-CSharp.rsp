@@ -356,7 +356,7 @@
 "Assets/Scripts/Inventory.cs"
 "Assets/Scripts/InventoryObject.cs"
 "Assets/Scripts/KinematicController.cs"
-"Assets/Scripts/Object.cs"
+"Assets/Scripts/PlayerController.cs"
 -langversion:9.0
 
 /deterministic
