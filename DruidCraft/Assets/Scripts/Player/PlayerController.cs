@@ -7,7 +7,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] InventoryScript inventoryScript;
     [SerializeField] PlaceableObject testObject;
 
-    void Update()
+
+    PlaceableObject test;
+
+	private void Start()
+	{
+		test = Instantiate(testObject, new Vector3(0, -5, 0), Quaternion.identity);
+	}
+
+
+	void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -18,7 +27,7 @@ public class PlayerController : MonoBehaviour
         //test function
         if (Input.GetKeyDown(KeyCode.E))
         {
-            PlaceableObject test = Instantiate(testObject);
+            
             
             inventoryScript.AddItem(test);
 

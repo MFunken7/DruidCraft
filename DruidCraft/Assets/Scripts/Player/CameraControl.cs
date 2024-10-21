@@ -6,7 +6,7 @@ public class CameraControl : MonoBehaviour
 {
     [SerializeField, Range(10, 20)] int MaxHeight = 15;
     [SerializeField, Range(50, 70)] int MaxRotation = 60;
-	[SerializeField] Camera camera;
+	[SerializeField] Camera camera1;
 
 	float rotationAngle = -2;
 
@@ -27,20 +27,20 @@ public class CameraControl : MonoBehaviour
 
 		zoom.z = -zoomValue;
 
-		camera.transform.localPosition += zoom;
+		camera1.transform.localPosition += zoom;
 
-		float cameraY = camera.transform.localPosition.y;
-		float cameraZ = camera.transform.localPosition.z;
+		float cameraY = camera1.transform.localPosition.y;
+		float cameraZ = camera1.transform.localPosition.z;
 
 		cameraY = Mathf.Clamp(cameraY, 10, MaxHeight);
 		
 		cameraZ = Mathf.Clamp(cameraZ, -5, -3);
 
-		Vector3 finalPosition = new Vector3(camera.transform.localPosition.x, cameraY, cameraZ);
+		Vector3 finalPosition = new Vector3(camera1.transform.localPosition.x, cameraY, cameraZ);
 
-		camera.transform.localPosition = finalPosition;
+		camera1.transform.localPosition = finalPosition;
 
-		float currentRotation = camera.transform.localRotation.eulerAngles.x;
+		float currentRotation = camera1.transform.localRotation.eulerAngles.x;
 
 		float newRotation = currentRotation + (rotationAngle * zoomValue);
 
@@ -49,7 +49,7 @@ public class CameraControl : MonoBehaviour
 		Quaternion rotation = Quaternion.Euler(newRotation, 0, 0);
 
 
-		camera.transform.localRotation = rotation;
+		camera1.transform.localRotation = rotation;
 
 
 

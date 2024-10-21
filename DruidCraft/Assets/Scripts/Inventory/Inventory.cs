@@ -15,6 +15,9 @@ public class InventoryScript : MonoBehaviour
 	[SerializeField] int inventoryHeight = 3;
 	[SerializeField] int inventoryWidth = 10;
 
+
+	[SerializeField] InventoryObject Test;
+
 	InventoryObject[,] inventory;
 	List<InventorySlot> inventorySlots;
 	List<InventorySlot> hotbarSlots;
@@ -32,6 +35,10 @@ public class InventoryScript : MonoBehaviour
 		inventorySlots = new List<InventorySlot>(inventoryHeight * inventoryWidth);
 		hotbarSlots = new List<InventorySlot>(5);
 		DrawInventory(inventory);
+
+		Test.numberOfItems = 20;
+
+		AddItem(Test);
 	}
 
 	private void MoveItem(int xPosition, int yPosition, int newXPos, int newYPos)
@@ -291,7 +298,6 @@ public class InventoryScript : MonoBehaviour
 				
 				if (Physics.Raycast(ray, out RaycastHit hitInfo, 50, 8))
 				{
-					Debug.DrawLine(hitInfo.transform.position, hitInfo.transform.position + Vector3.down * 10);
 					
 					
 					placeable.transform.position = hitInfo.point;

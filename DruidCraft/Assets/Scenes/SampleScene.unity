@@ -161,6 +161,7 @@ MonoBehaviour:
   hotbarUI: {fileID: 1492965094}
   inventoryHeight: 3
   inventoryWidth: 10
+  Test: {fileID: 5877591742599284970, guid: 5ae8fab7f55fdfa4aa2ce0ae88f8f9df, type: 3}
 --- !u!114 &181678682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,7 +645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHeight: 20
   MaxRotation: 70
-  camera: {fileID: 963194227}
+  camera1: {fileID: 963194227}
 --- !u!1 &1117177270
 GameObject:
   m_ObjectHideFlags: 0
