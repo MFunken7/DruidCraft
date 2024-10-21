@@ -5,8 +5,16 @@ using UnityEngine.UIElements;
 
 public class KinematicController : MonoBehaviour
 {
-	[SerializeField, Range(0, 40)] float speed = 1;
+	[SerializeField, Range(0, 80)] float speed = 1;
 	[SerializeField] GameObject PlayerModel;
+
+	Rigidbody rb;
+
+	private void Start()
+	{
+		rb = GetComponent<Rigidbody>();
+	}
+
 	void Update()
 	{
 
@@ -17,8 +25,7 @@ public class KinematicController : MonoBehaviour
 
 		Vector3 force = direction * speed * Time.deltaTime;
 		force.y = 0;
-		transform.localPosition += force;
-
+		rb.MovePosition(transform.position + force);
 
 		Vector3 rotation = new Vector3(-direction.x, direction.y, -direction.z);
 

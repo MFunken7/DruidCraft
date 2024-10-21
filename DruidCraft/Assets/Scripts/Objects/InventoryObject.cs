@@ -9,4 +9,7 @@ public class InventoryObject : MonoBehaviour
 	public int numberOfItems = 0;
 	public Sprite icon;
 	public string DisplayName;
+
+
+	
 }

@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
             PlaceableObject test = Instantiate(testObject);
             
             inventoryScript.AddItem(test);
+
+
             
         }
     }

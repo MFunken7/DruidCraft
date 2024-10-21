@@ -4,5 +4,11 @@ using UnityEngine;
 
 public class PlaceableObject : InventoryObject
 {
-	public GameObject placePrefab;
+	[SerializeField] public GameObject placePrefab;
+	[SerializeField] public Vector3 size;
+
+	private void Update()
+	{
+		Debug.Log("# of: " + numberOfItems);
+	}
 }

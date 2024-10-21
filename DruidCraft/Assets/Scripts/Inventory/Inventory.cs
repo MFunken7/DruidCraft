@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
@@ -193,9 +194,6 @@ public class InventoryScript : MonoBehaviour
 		{
 			position1.x = position.x;
 			position1.y = position.y;
-			Debug.Log("x: " + position.x);
-			Debug.Log("y: " + position.y);
-			Debug.Log(((position.y * 10) + position.x));
 			inventorySlots[(int)((position.y * 10) + position.x)].selector.enabled = true;
 			selected = true;
 		}
@@ -273,24 +271,46 @@ public class InventoryScript : MonoBehaviour
 
 		if (hotBarSelection < 5)
 		{
-			Debug.Log(1);
 			if (inventory[0,hotBarSelection] != null && inventory[0, hotBarSelection].GetComponent<PlaceableObject>())
 			{
-				Debug.Log(2);
-
 				if (!validSelection)
 				{
 					placeable = Instantiate<PlaceableObject>((PlaceableObject)inventory[0, hotBarSelection]).placePrefab;
+					
+					placeable.GetComponentInChildren<Collider>().enabled = false;
+					
 					validSelection = true;
-
 				}
 
-				placeable.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.localPosition.z));
-
-				if (Input.GetMouseButtonDown(0)) 
+				if (Input.GetKeyDown(KeyCode.R))
 				{
-					RemoveItem(0, hotBarSelection);
-					validSelection = false;
+					placeable.transform.Rotate(Vector3.up, 90);
+				}
+
+				Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+				
+				if (Physics.Raycast(ray, out RaycastHit hitInfo, 50, 8))
+				{
+					Debug.DrawLine(hitInfo.transform.position, hitInfo.transform.position + Vector3.down * 10);
+					
+					
+					placeable.transform.position = hitInfo.point;
+
+					Vector3 sizeVector = placeable.GetComponent<PlaceableObject>().size;
+
+					Vector3 center = new Vector3(placeable.transform.position.x, placeable.transform.position.y + sizeVector.y, placeable.transform.position.z);
+
+					Debug.Log(Physics.CheckBox(center, sizeVector, Quaternion.identity, 128));
+					//Debug.Log(Physics.OverlapBox(center, sizeVector, Quaternion.identity, 64)[0].ToString());
+
+					if (Input.GetMouseButtonDown(0) && !Physics.CheckBox(center, sizeVector, Quaternion.identity, 128))
+					{
+						placeable.GetComponentInChildren<Collider>().enabled = true;
+
+						RemoveItem(hotBarSelection, 0);
+						placeable = null;
+						validSelection = false;
+					}
 				}
 			}
 		}
