@@ -144,7 +144,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8364797495180640405}
   - component: {fileID: 7706280558253109135}
-  m_Layer: 0
+  - component: {fileID: 442536429718538008}
+  - component: {fileID: 9037089414842237185}
+  m_Layer: 7
   m_Name: Place_Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,6 +187,41 @@ MonoBehaviour:
   DisplayName: Box
   placePrefab: {fileID: 3598289970657240119}
   size: {x: 1.5, y: 1.5, z: 1.5}
+  interactUI: {fileID: 3352782919353239532, guid: 5a47286e690ac3d41ab7e6da5bdbd349, type: 3}
+  interactScript: {fileID: 9037089414842237185}
+--- !u!65 &442536429718538008
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3598289970657240119}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.5, y: 3, z: 3.5}
+  m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &9037089414842237185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3598289970657240119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4ddea2bd62760a408bfd9d22614c30a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9159393800053026188
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4216706607697643549}
   - component: {fileID: 827355819068438613}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: stumo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -283,9 +283,12 @@ public class InventoryScript : MonoBehaviour
 				if (!validSelection)
 				{
 					placeable = Instantiate<PlaceableObject>((PlaceableObject)inventory[0, hotBarSelection]).placePrefab;
-					
-					placeable.GetComponentInChildren<Collider>().enabled = false;
-					
+
+					foreach (Collider c in placeable.GetComponentsInChildren<Collider>())
+					{
+						c.enabled = false;
+					}
+
 					validSelection = true;
 				}
 
@@ -306,12 +309,14 @@ public class InventoryScript : MonoBehaviour
 
 					Vector3 center = new Vector3(placeable.transform.position.x, placeable.transform.position.y + sizeVector.y, placeable.transform.position.z);
 
-					Debug.Log(Physics.CheckBox(center, sizeVector, Quaternion.identity, 128));
-					//Debug.Log(Physics.OverlapBox(center, sizeVector, Quaternion.identity, 64)[0].ToString());
-
 					if (Input.GetMouseButtonDown(0) && !Physics.CheckBox(center, sizeVector, Quaternion.identity, 128))
 					{
-						placeable.GetComponentInChildren<Collider>().enabled = true;
+						foreach(Collider c in placeable.GetComponentsInChildren<Collider>())
+						{
+							c.enabled = true;
+						}
+
+						placeable.GetComponent<PlaceableObject>().Place();
 
 						RemoveItem(hotBarSelection, 0);
 						placeable = null;

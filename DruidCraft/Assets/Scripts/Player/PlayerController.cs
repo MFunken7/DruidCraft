@@ -25,14 +25,9 @@ public class PlayerController : MonoBehaviour
 
         
         //test function
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            
-            
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {            
             inventoryScript.AddItem(test);
-
-
-            
         }
     }
 
